@@ -25,7 +25,7 @@ jobs:
         run: npm run build
       - uses: actions/upload-artifact@v4
         with:
-          name: Upload Artifact
+          name: build
           path: .next/
       - name: Run Unit Tests
         run: npm run test
@@ -42,13 +42,15 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run E2E Tests
         run: npm run test:e2e
+        env:
+          FLAGSMITH_KEY: ${{ secrets.FLAGSMITH_KEY }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: playwright-report
           path: playwright-report/
       - name: Send a Slack Message on Failure
-        uses: slackapi/slack-github-action@v1.24.0
+        uses: slackapi/slack-github-action@v1.26.0
         if: failure()
         with:
           payload: |
