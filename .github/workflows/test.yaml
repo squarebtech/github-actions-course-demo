@@ -25,7 +25,7 @@ jobs:
         run: npm run build
       - uses: actions/upload-artifact@v4
         with:
-          name: Upload Artifact
+          name: build
           path: .next/
       - name: Run Unit Tests
         run: npm run test
