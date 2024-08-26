@@ -1,7 +1,7 @@
 import Flagsmith from "flagsmith-nodejs";
 
 const flagsmith = new Flagsmith({
-  environmentKey: "XEb8nPDveNzjwKeSniGrW9", //process.env.FLAGSMITH_KEY as string,
+  environmentKey: process.env.FLAGSMITH_KEY as string, //"XEb8nPDveNzjwKeSniGrW9", 
   requestTimeoutSeconds: 60,
 });
 
