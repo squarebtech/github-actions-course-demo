@@ -17,14 +17,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "yarn"
+          cache: "npm"
       - name: Install Dependencies
-        run: yarn
+        run: npm ci
       - name: Create Version PR or GitHub Release
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: yarn changeset tag
+          publish: npx changeset tag
         env:
           GITHUB_TOKEN: ${{ secrets.CHANGESETS_TOKEN }}
       - run: echo '${{ toJson(steps.changesets.outputs )}}'
