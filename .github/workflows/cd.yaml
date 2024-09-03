@@ -25,9 +25,11 @@ jobs:
       - run: echo 'Entering changesets step'
       - name: Create Version PR or GitHub Release
         id: changesets
-        uses: changesets/action@v1.4.8
+        uses: changesets/action@v1
         with:
-          publish: npx @changesets/cli tag
+          publish: |
+            npx changeset version
+            npx changeset tag
         env:
           GITHUB_TOKEN: ${{ secrets.CHANGESETS_TOKEN }}
       - run: echo '${{ toJson(steps.changesets.outputs )}}'
