@@ -25,7 +25,7 @@ jobs:
       - run: echo 'Entering changesets step'
       - name: Create Version PR or GitHub Release
         id: changesets
-        uses: changesets/action@v1
+        uses: changesets/action@v1.4.8
         with:
           publish: npx @changesets/cli tag
         env:
