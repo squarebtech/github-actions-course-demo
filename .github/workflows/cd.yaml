@@ -17,12 +17,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "npm"
-      # - name: Update NPM
-      #   run: npm install -g npm@10.8.3
+          cache: "yarn"
       - name: Install Dependencies
         run: yarn
-      - run: echo 'Entering changesets step'
       - name: Create Version PR or GitHub Release
         id: changesets
         uses: changesets/action@v1
