@@ -35,12 +35,13 @@ concurrency:
 permissions:
   id-token: write
   contents: read
+  pull-requests: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
+    # permissions:
+    #   pull-requests: write
     environment:
       name: ${{ inputs.github-env }}
       url: "http://${{ steps.get-env-cname.outputs.aws_env_cname }}"
