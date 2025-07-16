@@ -9,6 +9,9 @@ concurrency:
 
 jobs:
   create-version-pr-or-release:
+    permissions:
+      contents: read
+      pull-requests: write
     runs-on: ubuntu-latest
     outputs:
       should-deploy: ${{ steps.changesets.outputs.hasChangesets == 'false' }}
