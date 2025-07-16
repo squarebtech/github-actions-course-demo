@@ -78,6 +78,8 @@ jobs:
   run-tests:
     needs: create-version-pr-or-release
     if: needs.create-version-pr-or-release.outputs.should-deploy == 'true'
+    permissions:
+      contents: none
     uses: ./.github/workflows/test.yaml
     secrets: inherit
   deploy-to-staging:
